@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Container,
-  Navbar as NavbarComp,
+  Navbar as NavbarBootstrap,
   NavDropdown,
   Nav,
 } from "react-bootstrap";
@@ -10,9 +10,9 @@ import logo from "../assets/logo.svg";
 function Navbar() {
   return (
     <div>
-      <NavbarComp collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <NavbarBootstrap collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <NavbarComp.Brand href="#home">
+          <NavbarBootstrap.Brand href="#home">
             <img
               src={logo}
               width="30"
@@ -20,11 +20,13 @@ function Navbar() {
               className="d-inline-block align-top"
               alt="React Bootstrap logo"
             />
-          </NavbarComp.Brand>
-          <NavbarComp.Brand href="#home">Palta Store</NavbarComp.Brand>
+          </NavbarBootstrap.Brand>
+          <NavbarBootstrap.Brand href="#home">
+            Palta Store
+          </NavbarBootstrap.Brand>
 
-          <NavbarComp.Toggle aria-controls="responsive-navbar-nav" />
-          <NavbarComp.Collapse id="responsive-navbar-nav">
+          <NavbarBootstrap.Toggle aria-controls="responsive-navbar-nav" />
+          <NavbarBootstrap.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link href="#features">Novedades</Nav.Link>
               <Nav.Link href="#pricing">Ofertas</Nav.Link>
@@ -35,9 +37,9 @@ function Navbar() {
                 <NavDropdown.Item href="#action/3.4">Muebles</NavDropdown.Item>
               </NavDropdown>
             </Nav>
-          </NavbarComp.Collapse>
+          </NavbarBootstrap.Collapse>
         </Container>
-      </NavbarComp>
+      </NavbarBootstrap>
     </div>
   );
 }
