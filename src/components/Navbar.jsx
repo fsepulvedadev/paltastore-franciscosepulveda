@@ -6,6 +6,7 @@ import {
   Nav,
 } from "react-bootstrap";
 import logo from "../assets/logo.svg";
+import CartWidget from "./CartWidget/CartWidget";
 
 function Navbar() {
   return (
@@ -27,7 +28,7 @@ function Navbar() {
 
           <NavbarBootstrap.Toggle aria-controls="responsive-navbar-nav" />
           <NavbarBootstrap.Collapse id="responsive-navbar-nav">
-            <Nav className="ms-auto">
+            <Nav className="me-auto">
               <Nav.Link href="#features">Novedades</Nav.Link>
               <Nav.Link href="#pricing">Ofertas</Nav.Link>
               <NavDropdown title="Categorias" id="collasible-nav-dropdown">
@@ -36,6 +37,9 @@ function Navbar() {
                 <NavDropdown.Item href="#action/3.3">Cocina</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.4">Muebles</NavDropdown.Item>
               </NavDropdown>
+            </Nav>
+            <Nav>
+              <CartWidget />
             </Nav>
           </NavbarBootstrap.Collapse>
         </Container>
