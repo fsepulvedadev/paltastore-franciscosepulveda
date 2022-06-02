@@ -5,7 +5,7 @@ import Bolsa from "../../assets/bolsa.svg";
 export const CartWidget = () => {
   return (
     <div>
-      <a href="#">
+      <a href="/">
         <img className="bolsita" src={Bolsa} alt="" />
       </a>
     </div>
