@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import "./ClickTracker.css";
+import "./ItemCount.css";
 
-const ClickTracker = ({ stock, onAdd, inicial }) => {
+const ItemCount = ({ stock, onAdd, inicial }) => {
   const [contador, setContador] = useState(inicial);
   const [stockControl, setStockControl] = useState(false);
 
@@ -66,4 +66,4 @@ const ClickTracker = ({ stock, onAdd, inicial }) => {
   );
 };
 
-export default ClickTracker;
+export default ItemCount;

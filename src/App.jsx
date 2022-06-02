@@ -1,5 +1,4 @@
-import ClickTracker from "./components/ClickTracker/ClickTracker";
-import { useState } from "react";
+import ItemCount from "./components/ClickTracker/ItemCount";
 
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import Navbar from "./components/Navbar";
@@ -9,7 +8,7 @@ function App() {
     <div className="App">
       <Navbar />
       <ItemListContainer mensaje="Hola estoy saludando desde el componente App 👋" />
-      <ClickTracker
+      <ItemCount
         stock={14}
         inicial={1}
         onAdd={(cantidad) => {
