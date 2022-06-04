@@ -30,6 +30,7 @@ body {
 
 .palta-background {
   background-color: #d7e6a1 !important;
+  min-height: 100vh;
 }
 
 .palta-card-img {

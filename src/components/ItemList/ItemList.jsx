@@ -9,6 +9,7 @@ const ItemList = ({ items }) => {
         {items.map((item) => {
           return (
             <Item
+              key={item.id}
               name={item.name}
               stock={item.stock}
               img={item.img}

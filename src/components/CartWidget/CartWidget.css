@@ -1,5 +1,5 @@
 .bolsita {
-  width: 20px;
+  width: 1.75rem;
   filter: invert(100%) sepia(0%) saturate(7491%) hue-rotate(52deg)
     brightness(105%) contrast(101%);
 }

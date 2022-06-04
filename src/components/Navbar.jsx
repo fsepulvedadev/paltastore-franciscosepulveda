@@ -22,8 +22,8 @@ function Navbar() {
           <NavbarBootstrap.Brand href="#home">
             <img
               src={logo}
-              width="30"
-              height="30"
+              width="40"
+              height="40"
               className="d-inline-block align-top"
               alt="React Bootstrap logo"
             />
