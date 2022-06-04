@@ -1,20 +1,20 @@
-import ItemCount from "./components/ClickTracker/ItemCount";
+/* import ItemCount from "./components/ClickTracker/ItemCount"; */
 
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App palta-background h-100">
       <Navbar />
-      <ItemListContainer mensaje="Hola estoy saludando desde el componente App 👋" />
-      <ItemCount
+      <ItemListContainer />
+      {/* <ItemCount
         stock={14}
         inicial={1}
         onAdd={(cantidad) => {
           console.log(`Se han agregado ${cantidad} items al carrito.`);
         }}
-      />
+      /> */}
     </div>
   );
 }

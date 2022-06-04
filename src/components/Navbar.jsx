@@ -11,7 +11,13 @@ import CartWidget from "./CartWidget/CartWidget";
 function Navbar() {
   return (
     <div>
-      <NavbarBootstrap collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <NavbarBootstrap
+        collapseOnSelect
+        expand="lg"
+        bg="dark"
+        variant="dark"
+        className="palta-nav-background"
+      >
         <Container>
           <NavbarBootstrap.Brand href="#home">
             <img

@@ -1,3 +1,19 @@
+* {
+  font-family: sans-serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+.App {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .palta-color {
   background-color: #568203 !important;
 }
@@ -10,4 +26,20 @@
 .palta-btn:hover {
   background-color: #68911d !important;
   color: #fff !important;
+}
+
+.palta-background {
+  background-color: #d7e6a1 !important;
+}
+
+.palta-card-img {
+  object-fit: cover !important;
+}
+
+.palta-background-blue {
+  background-color: #212529 !important;
+}
+
+.palta-nav-background {
+  background-color: #2a1a1f !important;
 }
