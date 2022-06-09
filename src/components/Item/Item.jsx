@@ -5,8 +5,8 @@ const Item = ({ name, stock, img, description, price }) => {
   return (
     <>
       <div
-        className="card rounded-3 shadow-lg"
-        style={{ width: "15rem", height: "50vh", margin: "20px" }}
+        className="card rounded-3 shadow-lg m-md-4 my-4"
+        style={{ width: "15rem", height: "500px" }}
       >
         <img
           src={img}

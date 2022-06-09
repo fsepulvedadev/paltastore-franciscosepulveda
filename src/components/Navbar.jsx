@@ -7,6 +7,7 @@ import {
 } from "react-bootstrap";
 import logo from "../assets/logo.svg";
 import CartWidget from "./CartWidget/CartWidget";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -34,9 +35,21 @@ function Navbar() {
 
           <NavbarBootstrap.Toggle aria-controls="responsive-navbar-nav" />
           <NavbarBootstrap.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#features">Novedades</Nav.Link>
-              <Nav.Link href="#pricing">Ofertas</Nav.Link>
+            <Nav className="me-auto ">
+              <Nav.Link>
+                {" "}
+                <Link className="text-white text-decoration-none" to="/">
+                  {" "}
+                  Inicio{" "}
+                </Link>{" "}
+              </Nav.Link>
+              <Nav.Link href="#pricing">
+                {" "}
+                <Link className="text-white text-decoration-none" to="/on-sale">
+                  {" "}
+                  Ofertas{" "}
+                </Link>{" "}
+              </Nav.Link>
               <NavDropdown title="Categorias" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Casa</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Baño</NavDropdown.Item>
