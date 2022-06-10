@@ -20,17 +20,21 @@ function Navbar() {
         className="palta-nav-background"
       >
         <Container>
-          <NavbarBootstrap.Brand href="#home">
-            <img
-              src={logo}
-              width="40"
-              height="40"
-              className="d-inline-block align-top"
-              alt="React Bootstrap logo"
-            />
+          <NavbarBootstrap.Brand>
+            <Link to="/">
+              <img
+                src={logo}
+                width="40"
+                height="40"
+                className="d-inline-block align-top"
+                alt="React Bootstrap logo"
+              />
+            </Link>
           </NavbarBootstrap.Brand>
-          <NavbarBootstrap.Brand href="#home">
-            Palta Store
+          <NavbarBootstrap.Brand>
+            <Link to="/" className="text-decoration-none light">
+              Palta Store
+            </Link>
           </NavbarBootstrap.Brand>
 
           <NavbarBootstrap.Toggle aria-controls="responsive-navbar-nav" />

@@ -1,0 +1,15 @@
+.palta-carrusel {
+  width: 100%;
+}
+/* .palta-carrousel > img {
+  width: 500px !important;
+}
+ */
+.palta-carrousel-control {
+  filter: brightness(0);
+}
+
+.detail-bg {
+  background-color: #fff;
+  width: 90%;
+}

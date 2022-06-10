@@ -1,7 +1,16 @@
 import React from "react";
 import "./Item.css";
 
-const Item = ({ name, stock, img, description, price }) => {
+const Item = ({
+  name,
+  stock,
+  img,
+  description,
+  price,
+  categoria,
+  selectItem,
+  id,
+}) => {
   return (
     <>
       <div
@@ -9,7 +18,7 @@ const Item = ({ name, stock, img, description, price }) => {
         style={{ width: "15rem", height: "500px" }}
       >
         <img
-          src={img}
+          src={img[0]}
           className="card-img-top h-50 w-auto card-palta-img"
           style={{}}
           alt="..."
@@ -21,9 +30,14 @@ const Item = ({ name, stock, img, description, price }) => {
           <p className="card-text text-center badge palta-background-blue text-wrap">
             Stock {stock}
           </p>
-          <a href="'/'" className="btn btn-primary palta-btn">
+          <button
+            onClick={() => {
+              selectItem(name, price, description, categoria, stock, img, id);
+            }}
+            className="btn btn-primary palta-btn"
+          >
             Ver detalle
-          </a>
+          </button>
         </div>
       </div>
     </>

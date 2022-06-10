@@ -1,7 +1,6 @@
 import React from "react";
 import "./Footer.css";
 import logo from "../../assets/logo.svg";
-import twitter from "../../assets/twitter.svg";
 import github from "../../assets/github.svg";
 import web from "../../assets/chrome.svg";
 import linkedin from "../../assets/linkedin.svg";
@@ -9,7 +8,7 @@ import linkedin from "../../assets/linkedin.svg";
 const Footer = () => {
   return (
     <>
-      <footer id="sticky-footer" className="py-4 bg-dark text-white-50">
+      <footer id="sticky-footer" className="py-4 bg-dark text-white-50 ">
         <div className="row d-flex justify-content-center">
           <div className="col d-inline-flex flex-column flex-md-row justify-content-center align-items-center">
             <img

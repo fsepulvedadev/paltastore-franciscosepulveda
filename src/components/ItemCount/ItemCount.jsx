@@ -15,7 +15,7 @@ const ItemCount = ({ stock, onAdd, inicial }) => {
               className="btn btn-outline-secondary palta-btn"
               type="button"
               id="button-addon1"
-              onClick={() => setContador(contador - 1)}
+              onClick={() => (contador > 1 ? setContador(contador - 1) : null)}
             >
               -
             </button>
@@ -57,7 +57,7 @@ const ItemCount = ({ stock, onAdd, inicial }) => {
         </div>
         <button
           onClick={() => (onAdd(contador), setContador(inicial))}
-          className="btn btn-secondary col-1 palta-btn"
+          className="btn btn-secondary col palta-btn w-50"
         >
           Agregar
         </button>

@@ -9,7 +9,7 @@ import OnSale from "./components/pages/OnSale";
 function App() {
   return (
     <>
-      <div className="App palta-background h-100">
+      <div className="App palta-background h-100 shadow-lg">
         <BrowserRouter>
           <Navbar />
           <Routes>

@@ -1,16 +1,37 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import dataItems from "../../ItemsDB";
+import ItemDetail from "../ItemDetail/ItemDetail";
 
-const ItemDetailContainer = ({}) => {
-  const [Item, setItem] = useState([]);
+const ItemDetailContainer = ({ selectedItem }) => {
+  const [Item, setItem] = useState({});
 
-  const getItems = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(dataItems);
-    }, 2000);
-  });
+  const filtrarSelectItem = (array, SelectItem) => {
+    console.log(array, selectedItem);
 
-  return <div>ItemDetailContainer</div>;
+    let targetItem = array.filter((item) => {
+      return item.id === SelectItem.id;
+    });
+
+    setItem(targetItem);
+    console.log(Item);
+  };
+
+  useEffect(() => {
+    const getItems = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(dataItems);
+      }, 2000);
+    });
+    getItems.then((data) => {
+      filtrarSelectItem(data, selectedItem);
+    });
+  }, []);
+
+  return (
+    <div className="container-fluid">
+      {selectedItem && <ItemDetail targetItem={selectedItem} />}
+    </div>
+  );
 };
 
 export default ItemDetailContainer;
