@@ -2,18 +2,22 @@ import { useState, useEffect } from "react";
 import dataItems from "../../ItemsDB";
 import ItemDetail from "../ItemDetail/ItemDetail";
 
-const ItemDetailContainer = ({ selectedItem }) => {
-  const [Item, setItem] = useState({});
+import { useParams } from "react-router-dom";
+import PaltaLogo from "../../assets/logo.svg";
+
+const ItemDetailContainer = () => {
+  const [Item, setItem] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const { id } = useParams();
 
   const filtrarSelectItem = (array, SelectItem) => {
-    console.log(array, selectedItem);
-
     let targetItem = array.filter((item) => {
-      return item.id === SelectItem.id;
+      return item.id === parseInt(SelectItem);
     });
 
     setItem(targetItem);
-    console.log(Item);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -23,13 +27,18 @@ const ItemDetailContainer = ({ selectedItem }) => {
       }, 2000);
     });
     getItems.then((data) => {
-      filtrarSelectItem(data, selectedItem);
+      filtrarSelectItem(data, id);
     });
-  }, []);
+  }, [id]);
 
   return (
     <div className="container-fluid">
-      {selectedItem && <ItemDetail targetItem={selectedItem} />}
+      {loading && (
+        <div className="w-100 d-flex justify-content-center aling-items-center palta-spiner-container">
+          <img src={PaltaLogo} alt="Palta Logo" className="palta-spiner" />
+        </div>
+      )}
+      {!loading && Item && <ItemDetail targetItem={Item[0]} />}
     </div>
   );
 };

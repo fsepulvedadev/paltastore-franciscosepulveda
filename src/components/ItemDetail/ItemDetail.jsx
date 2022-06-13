@@ -1,58 +1,45 @@
 import React from "react";
-
+import { Carousel } from "react-bootstrap";
 import "./ItemDetail.css";
 import ItemCount from "../ItemCount/ItemCount";
+import { Link } from "react-router-dom";
 
 const ItemDetail = ({ targetItem }) => {
+  console.log(targetItem);
   return (
-    <div className="detail-bg d-flex w-100 my-4 py-4 p-md-0 flex-column flex-md-row justify-content-around align-items-start m-md-4 shadow-lg">
-      <div
-        id="carouselExampleControls"
-        class="carousel slide palta-carrusel rounded"
-        data-bs-ride="carousel"
+    <div className="detail-bg d-flex w-100 my-4 py-4 p-md-0 flex-column flex-md-row justify-content-around align-items-start m-md-4 shadow-lg h-100">
+      <Carousel
+        variant="dark"
+        controls={targetItem.img.length > 1 ? true : false}
       >
-        <div class="carousel-inner">
-          <div class="carousel-item active palta-carrousel">
+        <Carousel.Item className="mw-100">
+          <img className="d-block " src={targetItem.img[0]} alt="First slide" />
+          <Carousel.Caption></Carousel.Caption>
+        </Carousel.Item>
+        {targetItem.img[1] && (
+          <Carousel.Item className="mw-100">
             <img
-              src={targetItem?.img}
-              class="d-block w-100 palta-carrusel-img"
-              alt="..."
+              className="d-block "
+              src={targetItem.img[1]}
+              alt="Second slide"
             />
-          </div>
-          <div class="carousel-item">
+
+            <Carousel.Caption></Carousel.Caption>
+          </Carousel.Item>
+        )}
+
+        {targetItem.img[2] && (
+          <Carousel.Item className="flex overflow-hidden">
             <img
-              src={targetItem?.img}
-              class="d-block w-100 palta-carrusel-img"
-              alt="..."
+              className="d-block "
+              src={targetItem.img[2]}
+              alt="Third slide"
             />
-          </div>
-          <div class="carousel-item">
-            <img
-              src={targetItem?.img}
-              class="d-block w-100 palta-carrusel-img"
-              alt="..."
-            />
-          </div>
-        </div>
-        <button
-          class="carousel-control-prev palta-carrousel-control"
-          type="button"
-          data-bs-target="#carouselExampleControls"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next palta-carrousel-control"
-          type="button"
-          data-bs-target="#carouselExampleControls"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+
+            <Carousel.Caption></Carousel.Caption>
+          </Carousel.Item>
+        )}
+      </Carousel>
       <div className="d-flex flex-column justify-content-center align-items-center h-100">
         <h2 className="text-center mt-md-4">{targetItem.name}</h2>
         <hr />
@@ -60,8 +47,14 @@ const ItemDetail = ({ targetItem }) => {
         <hr />
         <p className="lh-2 w-50">{targetItem.description}</p>
         <ItemCount stock={targetItem.stock} inicial={1} />
+        <button className="btn btn-primary palta-btn mt-2">
+          {" "}
+          <Link className="text-decoration-none text-white" to={`/`}>
+            Regresar{" "}
+            <ion-icon size="medium" name="return-down-back-outline"></ion-icon>
+          </Link>{" "}
+        </button>
       </div>
-      <div></div>
     </div>
   );
 };

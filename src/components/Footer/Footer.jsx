@@ -8,8 +8,8 @@ import linkedin from "../../assets/linkedin.svg";
 const Footer = () => {
   return (
     <>
-      <footer id="sticky-footer" className="py-4 bg-dark text-white-50 ">
-        <div className="row d-flex justify-content-center">
+      <footer id="sticky-footer" className="py-3 bg-dark text-white-50">
+        <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col d-inline-flex flex-column flex-md-row justify-content-center align-items-center">
             <img
               src={logo}
@@ -29,7 +29,7 @@ const Footer = () => {
             </p>
           </div>
           <div className="col d-flex d-md-block">
-            <ul className="palta-list d-flex justify-content-center align-items-center">
+            <ul className="palta-list d-flex justify-content-center align-items-center m-0 p-0">
               <li className="palta-list-item">
                 <a
                   target="_blank"

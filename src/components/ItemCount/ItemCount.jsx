@@ -8,7 +8,7 @@ const ItemCount = ({ stock, onAdd, inicial }) => {
 
   return (
     <>
-      <div className="container d-flex  flex-column justify-content-center align-items-center">
+      <div className="container d-flex flex-column justify-content-center align-items-center">
         <div className="row">
           <div className="input-group mb-3 col-1">
             <button
@@ -29,7 +29,7 @@ const ItemCount = ({ stock, onAdd, inicial }) => {
               aria-describedby="button-addon1"
             />
             <button
-              className="btn btn-outline-secondary palta-btn"
+              className="btn btn-outline-secondary palta-btn col "
               type="button"
               id="button-addon1"
               onClick={() =>
@@ -57,9 +57,10 @@ const ItemCount = ({ stock, onAdd, inicial }) => {
         </div>
         <button
           onClick={() => (onAdd(contador), setContador(inicial))}
-          className="btn btn-secondary col palta-btn w-50"
+          className="btn btn-secondary palta-btn  d-flex justify-content-center align-items-center"
         >
-          Agregar
+          <span className="mx-2">Agregar </span>
+          <ion-icon size="medium" name="add-circle-outline"></ion-icon>
         </button>
       </div>
     </>

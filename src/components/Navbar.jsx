@@ -32,7 +32,7 @@ function Navbar() {
             </Link>
           </NavbarBootstrap.Brand>
           <NavbarBootstrap.Brand>
-            <Link to="/" className="text-decoration-none light">
+            <Link to="/" className="text-decoration-none text-white">
               Palta Store
             </Link>
           </NavbarBootstrap.Brand>
@@ -41,24 +41,48 @@ function Navbar() {
           <NavbarBootstrap.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto ">
               <Nav.Link>
-                {" "}
                 <Link className="text-white text-decoration-none" to="/">
-                  {" "}
-                  Inicio{" "}
-                </Link>{" "}
+                  Inicio
+                </Link>
               </Nav.Link>
-              <Nav.Link href="#pricing">
-                {" "}
+              <Nav.Link>
                 <Link className="text-white text-decoration-none" to="/on-sale">
-                  {" "}
-                  Ofertas{" "}
-                </Link>{" "}
+                  Ofertas
+                </Link>
               </Nav.Link>
               <NavDropdown title="Categorias" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Casa</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Baño</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Cocina</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.4">Muebles</NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link
+                    className="text-decoration-none text-black"
+                    to="/category/1"
+                  >
+                    Casa
+                  </Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link
+                    className="text-decoration-none text-black"
+                    to="/category/2"
+                  >
+                    Baño
+                  </Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link
+                    className="text-decoration-none text-black"
+                    to="/category/3"
+                  >
+                    Cocina
+                  </Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link
+                    className="text-decoration-none text-black"
+                    to="/category/4"
+                  >
+                    Muebles
+                  </Link>
+                </NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Nav>

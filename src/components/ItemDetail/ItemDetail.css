@@ -13,3 +13,15 @@
   background-color: #fff;
   width: 90%;
 }
+
+.detail-bg img {
+  width: 600px;
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .detail-bg img {
+    width: 100%;
+    height: auto;
+  }
+}
