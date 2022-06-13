@@ -32,7 +32,7 @@ const ItemDetailContainer = () => {
   }, [id]);
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       {loading && (
         <div className="w-100 d-flex justify-content-center aling-items-center palta-spiner-container">
           <img src={PaltaLogo} alt="Palta Logo" className="palta-spiner" />

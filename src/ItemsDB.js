@@ -82,6 +82,80 @@ const dataItems = [
       "https://www.morph.com.ar/pub/media/catalog/product/cache/c249fbb42cf583b1a8cf6f6bd1b7b4b4/3/7/370172_a_tapaasientodesingparainodorodog.jpg",
     ],
   },
+  {
+    id: 7,
+    name: "Fuente Cerámica Gde Staub Rectangular",
+    price: "7.990",
+    description:
+      "Fuente de cerámica esmaltada en 2 dos colores, ideal para el horno y llevar directamente a la mesa.",
+    categoria: "3",
+    stock: 24,
+    img: [
+      "https://www.morph.com.ar/pub/media/catalog/product/cache/c249fbb42cf583b1a8cf6f6bd1b7b4b4/3/7/373736_a_fuentegdestaubrectangular39x26x7_5cm.jpg",
+    ],
+  },
+  {
+    id: 8,
+    name: "Especiero Blacky Soporte 6 Frascos",
+    price: "6.490",
+    description:
+      " Especiero de metal con 6 frascos cuadrados de vidrio, cada frasco tiene una capacidad de 50ml con tapa de plástico.",
+    categoria: "3",
+    stock: 11,
+    img: [
+      "https://www.morph.com.ar/pub/media/catalog/product/cache/c249fbb42cf583b1a8cf6f6bd1b7b4b4/3/7/372295_a_especieroblackycsoporte.jpg",
+      "https://www.morph.com.ar/pub/media/catalog/product/cache/c249fbb42cf583b1a8cf6f6bd1b7b4b4/3/7/372295_b_especieroblackycsoporte.jpg",
+      "https://www.morph.com.ar/pub/media/catalog/product/cache/c249fbb42cf583b1a8cf6f6bd1b7b4b4/3/7/372295_c_especieroblackycsoporte.jpg",
+    ],
+  },
+  {
+    id: 9,
+    name: "Tabla Pizza Bamboo Con Accesorio",
+    price: "5.590",
+    description:
+      " Tabla para pizza de bamboo con manija, incluye cortante para pizza",
+    categoria: "3",
+    stock: 7,
+    img: [
+      "https://www.morph.com.ar/pub/media/catalog/product/cache/c249fbb42cf583b1a8cf6f6bd1b7b4b4/3/7/373127_a_tablapizzabamboocaccesorio.jpg",
+    ],
+  },
+  {
+    id: 10,
+    name: "Portarretratos Hepta Madera",
+    price: "6.490",
+    description:
+      "Única pieza compuesta por 7 portarretratos de madera con vidrio.",
+    categoria: "1",
+    stock: 18,
+    img: [
+      "https://www.morph.com.ar/pub/media/catalog/product/cache/c249fbb42cf583b1a8cf6f6bd1b7b4b4/3/3/337746_a_portaretratoshepta.jpg",
+    ],
+  },
+  {
+    id: 11,
+    name: "Reloj Mirror Min",
+    price: "3.990",
+    description: "Espejo estampado, agujas metálicas",
+    categoria: "1",
+    stock: 23,
+    img: [
+      "https://www.morph.com.ar/pub/media/catalog/product/cache/c249fbb42cf583b1a8cf6f6bd1b7b4b4/3/3/337434_a_relojminaok.jpg",
+      "https://www.morph.com.ar/pub/media/catalog/product/cache/c249fbb42cf583b1a8cf6f6bd1b7b4b4/3/3/337434_a_relojmin-a.jpg",
+    ],
+  },
+  {
+    id: 12,
+    name: "Reloj Mirror Full",
+    price: "3.990",
+    description: "Espejo estampado, agujas metálicas.",
+    categoria: "1",
+    stock: 17,
+    img: [
+      "https://www.morph.com.ar/pub/media/catalog/product/cache/c249fbb42cf583b1a8cf6f6bd1b7b4b4/3/3/337432_a_relojmirrorfullok.jpg",
+      "https://www.morph.com.ar/pub/media/catalog/product/cache/c249fbb42cf583b1a8cf6f6bd1b7b4b4/3/3/337432_a_relojmirrorfull.jpg",
+    ],
+  },
 ];
 
 export default dataItems;
