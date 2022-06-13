@@ -38,7 +38,7 @@ const dataItems = [
     price: "67.991",
     description:
       "La Comoda Alanis, posee un diseño de origen Nórdico con estilo minimalista y cuenta con 2 cajones de madera grandes y 2 puertas súper cómodas para que puedas guardar de todo. Los muebles de la colección Alanis son ideales para livings, dormitorios y comedores. Posee terminaciones redondeadas y de máxima calidad. Color Madera Natural y Blanco.",
-    categoria: " 4",
+    categoria: "4",
     stock: 6,
     img: [
       "https://www.morph.com.ar/pub/media/catalog/product/cache/c249fbb42cf583b1a8cf6f6bd1b7b4b4/3/6/365323_a_comodaairin.jpg",

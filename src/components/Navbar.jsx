@@ -46,7 +46,7 @@ function Navbar() {
                 </Link>
               </Nav.Link>
               <Nav.Link>
-                <Link className="text-white text-decoration-none" to="/on-sale">
+                <Link className="text-white text-decoration-none" to="/">
                   Ofertas
                 </Link>
               </Nav.Link>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
-import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer";
 import "./ItemListContainer.css";
 import dataItems from "../../ItemsDB";
 import PaltaLogo from "../../assets/logo.svg";
