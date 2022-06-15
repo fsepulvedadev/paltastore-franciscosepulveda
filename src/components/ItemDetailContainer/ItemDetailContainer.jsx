@@ -12,7 +12,7 @@ const ItemDetailContainer = () => {
   const { id } = useParams();
 
   const filtrarSelectItem = (array, SelectItem) => {
-    let targetItem = array.filter((item) => {
+    let targetItem = array.find((item) => {
       return item.id === parseInt(SelectItem);
     });
 
@@ -38,7 +38,7 @@ const ItemDetailContainer = () => {
           <img src={PaltaLogo} alt="Palta Logo" className="palta-spiner" />
         </div>
       )}
-      {!loading && Item && <ItemDetail targetItem={Item[0]} />}
+      {!loading && Item && <ItemDetail targetItem={Item} />}
     </div>
   );
 };

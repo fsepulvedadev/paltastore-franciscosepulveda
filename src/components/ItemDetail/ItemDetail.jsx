@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Carousel } from "react-bootstrap";
 import "./ItemDetail.css";
 import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
 
 const ItemDetail = ({ targetItem }) => {
+  const [cantidad, setCantidad] = useState(0);
+
+  const onAdd = (cantidad) => {
+    setCantidad(cantidad);
+  };
+
   console.log(targetItem);
   return (
     <div className="detail-bg d-flex w-100 my-4 py-4 p-md-0 flex-column flex-md-row justify-content-around align-items-start m-md-4 shadow-lg h-100">
@@ -14,7 +20,6 @@ const ItemDetail = ({ targetItem }) => {
       >
         <Carousel.Item className="mw-100">
           <img className="d-block" src={targetItem.img[0]} alt="First slide" />
-          <Carousel.Caption></Carousel.Caption>
         </Carousel.Item>
         {targetItem.img[1] && (
           <Carousel.Item className="mw-100">
@@ -29,7 +34,7 @@ const ItemDetail = ({ targetItem }) => {
         )}
 
         {targetItem.img[2] && (
-          <Carousel.Item className="flex overflow-hidden">
+          <Carousel.Item className="mw-100">
             <img
               className="d-block"
               src={targetItem.img[2]}
@@ -47,13 +52,24 @@ const ItemDetail = ({ targetItem }) => {
         <hr />
         <h5 className="fw-bold">DESCRIPCION</h5>
         <p className="lh-2 w-50">{targetItem.description}</p>
-        <ItemCount stock={targetItem.stock} inicial={1} />
+        {cantidad < 1 && (
+          <ItemCount stock={targetItem.stock} inicial={1} onAdd={onAdd} />
+        )}
+        {cantidad > 0 && (
+          <button className="btn btn-primary palta-btn">
+            {" "}
+            <Link className="text-decoration-none text-white" to="/cart">
+              {" "}
+              Terminar Compra{" "}
+            </Link>{" "}
+          </button>
+        )}
+
         <button className="btn btn-primary palta-btn mt-2">
-          {" "}
           <Link className="text-decoration-none text-white" to={`/`}>
-            Regresar{" "}
+            Regresar
             <ion-icon size="medium" name="return-down-back-outline"></ion-icon>
-          </Link>{" "}
+          </Link>
         </button>
       </div>
     </div>

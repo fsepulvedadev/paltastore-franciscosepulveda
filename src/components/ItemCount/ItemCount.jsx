@@ -56,7 +56,7 @@ const ItemCount = ({ stock, onAdd, inicial }) => {
           )}
         </div>
         <button
-          onClick={() => /* onAdd(contador), */ setContador(inicial)}
+          onClick={() => onAdd(contador)}
           className="btn btn-secondary palta-btn  d-flex justify-content-center align-items-center"
         >
           <span className="mx-2">Agregar </span>
