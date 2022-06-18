@@ -13,6 +13,7 @@ import { CartContext } from "../context/CartContext";
 
 function Navbar() {
   const { cart } = useContext(CartContext);
+  console.log(cart.lenght);
 
   return (
     <div>
@@ -89,11 +90,13 @@ function Navbar() {
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <Nav>
-              <Link to="/cart">
-                <CartWidget carrito={cart} />
-              </Link>
-            </Nav>
+            {cart && (
+              <Nav>
+                <Link to="/cart">
+                  <CartWidget carrito={cart} />
+                </Link>
+              </Nav>
+            )}
           </NavbarBootstrap.Collapse>
         </Container>
       </NavbarBootstrap>

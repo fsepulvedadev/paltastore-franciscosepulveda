@@ -16,7 +16,7 @@ export const CartWidget = ({ carrito }) => {
   }, [carrito]);
 
   return (
-    <div>
+    <div className={`${cantidadCart > 0 ? "d-flex" : "d-none"}`}>
       <a href="/">
         <img className="bolsita" src={Bolsa} alt="" />
         <div className="cart-cantidad d-inline-block position-absolute text-white text-center">
