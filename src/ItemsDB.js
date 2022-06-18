@@ -9,7 +9,7 @@ const dataItems = [
   {
     id: 1,
     name: "Mesa Tom Baja Blanca",
-    price: "11.806",
+    price: 11806,
     description:
       "Mesa ratona romeo rectangular blanca. Construida en melamina blanca de 18mm de espesor con los cantos invertidos a 45º grados.",
     categoria: "4",
@@ -21,7 +21,7 @@ const dataItems = [
   {
     id: 2,
     name: "Mesa Anne Blanca Y Roble 60cm",
-    price: "8.491",
+    price: 8491,
     description:
       "Mesa construida en melamina blanca y roble de 18 mm de espesor. Posee los cantos invertidos a 45° grados. Se ensambla por encastre y requiere destornillador. Se entrega embalada en caja de cartón a medida. Es ideal para ser utilizada como mesa ratona de living.",
     categoria: "4",
@@ -35,7 +35,7 @@ const dataItems = [
   {
     id: 3,
     name: "Cómoda Airin",
-    price: "67.991",
+    price: 67991,
     description:
       "La Comoda Alanis, posee un diseño de origen Nórdico con estilo minimalista y cuenta con 2 cajones de madera grandes y 2 puertas súper cómodas para que puedas guardar de todo. Los muebles de la colección Alanis son ideales para livings, dormitorios y comedores. Posee terminaciones redondeadas y de máxima calidad. Color Madera Natural y Blanco.",
     categoria: "4",
@@ -49,7 +49,7 @@ const dataItems = [
   {
     id: 4,
     name: "Tapa Y Tabla Inodoro Marfil",
-    price: "10.791",
+    price: 10791,
     description:
       "Tabla y tapa de inodoro estampadas. Por dentro replica el diseño que tiene por fuera. Fabricada en MDF de alta densidad, y herrajes de acero inoxidable. Medida universal, por lo que se adapta a casi todos los inodoros. Incluye accesorios de montaje e instrucciones para su colocación.",
     categoria: "2",
@@ -61,7 +61,7 @@ const dataItems = [
   {
     id: 5,
     name: "Tapa Y Tabla Inodoro Madera Vintage",
-    price: "10.791",
+    price: 10791,
     description:
       "Tabla y tapa de inodoro estampadas. Por dentro replica el diseño que tiene por fuera. Fabricada en MDF de alta densidad, y herrajes de acero inoxidable. Medida universal, por lo que se adapta a casi todos los inodoros. Incluye accesorios de montaje e instrucciones para su colocación.",
     categoria: "2",
@@ -73,7 +73,7 @@ const dataItems = [
   {
     id: 6,
     name: "Tapa Y Tabla Inodoro Dog",
-    price: "11.891",
+    price: 11891,
     description:
       "Tabla y tapa de inodoro estampadas. Por dentro replica el diseño que tiene por fuera. Fabricada en MDF de alta densidad, y herrajes de acero inoxidable. Medida universal, por lo que se adapta a casi todos los inodoros. Incluye accesorios de montaje e instrucciones para su colocación. ",
     categoria: "2",
@@ -84,8 +84,8 @@ const dataItems = [
   },
   {
     id: 7,
-    name: "Fuente Cerámica Gde Staub Rectangular",
-    price: "7.990",
+    name: "Fuente Cerámica Rectangular",
+    price: 7990,
     description:
       "Fuente de cerámica esmaltada en 2 dos colores, ideal para el horno y llevar directamente a la mesa.",
     categoria: "3",
@@ -97,7 +97,7 @@ const dataItems = [
   {
     id: 8,
     name: "Especiero Blacky Soporte 6 Frascos",
-    price: "6.490",
+    price: 6490,
     description:
       " Especiero de metal con 6 frascos cuadrados de vidrio, cada frasco tiene una capacidad de 50ml con tapa de plástico.",
     categoria: "3",
@@ -111,7 +111,7 @@ const dataItems = [
   {
     id: 9,
     name: "Tabla Pizza Bamboo Con Accesorio",
-    price: "5.590",
+    price: 5590,
     description:
       " Tabla para pizza de bamboo con manija, incluye cortante para pizza",
     categoria: "3",
@@ -123,7 +123,7 @@ const dataItems = [
   {
     id: 10,
     name: "Portarretratos Hepta Madera",
-    price: "6.490",
+    price: 6490,
     description:
       "Única pieza compuesta por 7 portarretratos de madera con vidrio.",
     categoria: "1",
@@ -135,7 +135,7 @@ const dataItems = [
   {
     id: 11,
     name: "Reloj Mirror Min",
-    price: "3.990",
+    price: 3990,
     description: "Espejo estampado, agujas metálicas",
     categoria: "1",
     stock: 23,
@@ -147,7 +147,7 @@ const dataItems = [
   {
     id: 12,
     name: "Reloj Mirror Full",
-    price: "3.990",
+    price: 3990,
     description: "Espejo estampado, agujas metálicas.",
     categoria: "1",
     stock: 17,

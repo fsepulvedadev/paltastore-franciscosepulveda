@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Carousel } from "react-bootstrap";
 import "./ItemDetail.css";
 import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ targetItem }) => {
+  const { onAddCart, isInCart, editItem } = useContext(CartContext);
   const [cantidad, setCantidad] = useState(0);
 
   const onAdd = (cantidad) => {
-    setCantidad(cantidad);
+    if (isInCart(targetItem.id)) {
+      editItem(targetItem.id, cantidad);
+    } else {
+      setCantidad(cantidad);
+      onAddCart(targetItem, cantidad);
+    }
   };
 
-  console.log(targetItem);
   return (
     <div className="detail-bg d-flex w-100 my-4 py-4 p-md-0 flex-column flex-md-row justify-content-around align-items-start m-md-4 shadow-lg h-100">
       <Carousel

@@ -12,7 +12,6 @@ const ItemListContainer = () => {
   const [error, setError] = useState(false);
 
   const { id } = useParams();
-  console.log(Items.length);
 
   useEffect(() => {
     const getItems = new Promise((res, rej) => {
@@ -47,8 +46,6 @@ const ItemListContainer = () => {
       stock: stock,
       img: img,
     });
-
-    console.log(selectedItem);
   };
 
   return (

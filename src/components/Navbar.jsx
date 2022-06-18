@@ -8,8 +8,12 @@ import {
 import logo from "../assets/logo.svg";
 import CartWidget from "./CartWidget/CartWidget";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 function Navbar() {
+  const { cart } = useContext(CartContext);
+
   return (
     <div>
       <NavbarBootstrap
@@ -86,7 +90,9 @@ function Navbar() {
               </NavDropdown>
             </Nav>
             <Nav>
-              <CartWidget />
+              <Link to="/cart">
+                <CartWidget carrito={cart} />
+              </Link>
             </Nav>
           </NavbarBootstrap.Collapse>
         </Container>
