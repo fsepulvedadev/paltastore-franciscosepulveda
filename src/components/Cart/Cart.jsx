@@ -73,7 +73,11 @@ const Cart = () => {
                               type="button"
                               id="button-addon1"
                               onClick={() => {
-                                editItem(item.id, item.cantidad - 1);
+                                if (item.cantidad > 1) {
+                                  editItem(item.id, item.cantidad - 1);
+                                } else {
+                                  removeItem(item.id);
+                                }
                               }}
                             >
                               <ion-icon name="remove-outline"></ion-icon>
