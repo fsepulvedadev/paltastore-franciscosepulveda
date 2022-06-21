@@ -55,7 +55,7 @@ const ItemListContainer = () => {
           setBusqueda("");
         }
         setloading(false);
-      }, 1000);
+      }, 500);
     } else {
       setItems(dataItems);
     }

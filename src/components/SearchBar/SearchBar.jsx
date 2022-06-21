@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useEffect } from "react";
 import { Form, FormControl, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
 const SearchBar = () => {
@@ -26,15 +27,16 @@ const SearchBar = () => {
           value={userInput}
           onChange={(e) => setUserInput(e.target.value.toLowerCase())}
         />
-
-        <Button
-          onClick={(e) => {
-            setBusqueda(userInput);
-          }}
-          className="palta-btn border-0 py-2 text-center"
-        >
-          <ion-icon name="search-outline"></ion-icon>
-        </Button>
+        <Link to="/">
+          <Button
+            onClick={(e) => {
+              setBusqueda(userInput);
+            }}
+            className="palta-btn border-0 py-2 text-center"
+          >
+            <ion-icon name="search-outline"></ion-icon>
+          </Button>
+        </Link>
       </Form>
     </>
   );
