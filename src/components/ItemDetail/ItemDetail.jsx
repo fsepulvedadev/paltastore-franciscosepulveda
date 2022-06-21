@@ -6,17 +6,8 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ targetItem }) => {
-  const { onAddCart, isInCart, editItem } = useContext(CartContext);
+  const { onAddCart } = useContext(CartContext);
   const [cantidad, setCantidad] = useState(0);
-
-  const onAdd = (cantidad) => {
-    if (isInCart(targetItem.id)) {
-      editItem(targetItem.id, cantidad);
-    } else {
-      setCantidad(cantidad);
-      onAddCart(targetItem, cantidad);
-    }
-  };
 
   return (
     <div className="detail-bg d-flex w-100 my-4 py-4 p-md-0 flex-column flex-md-row justify-content-around align-items-start m-md-4 shadow-lg h-100">
@@ -59,7 +50,14 @@ const ItemDetail = ({ targetItem }) => {
         <h5 className="fw-bold">DESCRIPCION</h5>
         <p className="lh-2 w-50">{targetItem.description}</p>
         {cantidad < 1 && (
-          <ItemCount stock={targetItem.stock} inicial={1} onAdd={onAdd} />
+          <ItemCount
+            stock={targetItem.stock}
+            inicial={1}
+            onAdd={onAddCart}
+            targetItem={targetItem}
+            cantidad={cantidad}
+            setCantidad={setCantidad}
+          />
         )}
         {cantidad > 0 && (
           <button className="btn btn-primary palta-btn">

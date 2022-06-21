@@ -7,16 +7,33 @@ const CartContextProvider = ({ children }) => {
   const [busqueda, setBusqueda] = React.useState("");
 
   const onAddCart = (item, cantidad) => {
-    setCart([
-      ...cart,
-      {
-        id: item.id,
-        name: item.name,
-        price: item.price,
-        cantidad: cantidad,
-        img: item.img,
-      },
-    ]);
+    if (isInCart(item.id)) {
+      setCart(
+        cart.reduce((newCart, _item) => {
+          if (_item.id === item.id) {
+            newCart.push({
+              ..._item,
+              cantidad: _item.cantidad + cantidad,
+            });
+            return newCart;
+          }
+          newCart.push(item);
+          return newCart;
+        }, [])
+      );
+    } else {
+      setCart([
+        ...cart,
+        {
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          cantidad: cantidad,
+          img: item.img,
+        },
+      ]);
+    }
+
     console.log(cart);
   };
 

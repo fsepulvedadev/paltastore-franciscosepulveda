@@ -2,7 +2,14 @@ import React, { useState } from "react";
 
 import "./ItemCount.css";
 
-const ItemCount = ({ stock, onAdd, inicial }) => {
+const ItemCount = ({
+  stock,
+  onAdd,
+  inicial,
+  targetItem,
+  cantidad,
+  setCantidad,
+}) => {
   const [contador, setContador] = useState(inicial);
   const [stockControl, setStockControl] = useState(false);
 
@@ -56,7 +63,7 @@ const ItemCount = ({ stock, onAdd, inicial }) => {
           )}
         </div>
         <button
-          onClick={() => onAdd(contador)}
+          onClick={() => (onAdd(targetItem, contador), setCantidad(contador))}
           className="btn btn-secondary palta-btn  d-flex justify-content-center align-items-center"
         >
           <span className="mx-2">Agregar </span>
