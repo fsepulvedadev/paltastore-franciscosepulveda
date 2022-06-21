@@ -1,0 +1,17 @@
+.search-bar {
+  width: 200px !important;
+  transition: all 0.5s;
+  text-align: left;
+}
+.search-bar:focus {
+  width: 300px !important;
+}
+
+@media screen and (max-width: 768px) {
+  .search-bar {
+    margin-left: 0 !important;
+  }
+  .search-bar:focus {
+    width: 100% !important;
+  }
+}
