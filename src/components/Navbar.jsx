@@ -4,16 +4,20 @@ import {
   Navbar as NavbarBootstrap,
   NavDropdown,
   Nav,
+  Form,
+  FormControl,
+  Button,
 } from "react-bootstrap";
 import logo from "../assets/logo.svg";
 import CartWidget from "./CartWidget/CartWidget";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
+import SearchBar from "./SearchBar/SearchBar";
 
 function Navbar() {
+  const [buscando, setBuscando] = useState(false);
   const { cart } = useContext(CartContext);
-  console.log(cart.lenght);
 
   return (
     <div>
@@ -90,13 +94,17 @@ function Navbar() {
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            {cart && (
-              <Nav>
-                <Link to="/cart">
-                  <CartWidget carrito={cart} />
-                </Link>
-              </Nav>
-            )}
+            <div className="d-flex align-items-md-center flex-column-reverse flex-md-row">
+              <SearchBar />
+
+              {cart && (
+                <Nav>
+                  <Link to="/cart">
+                    <CartWidget carrito={cart} />
+                  </Link>
+                </Nav>
+              )}
+            </div>
           </NavbarBootstrap.Collapse>
         </Container>
       </NavbarBootstrap>

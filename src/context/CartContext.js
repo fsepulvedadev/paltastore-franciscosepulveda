@@ -4,6 +4,7 @@ export const CartContext = React.createContext({});
 
 const CartContextProvider = ({ children }) => {
   const [cart, setCart] = React.useState([]);
+  const [busqueda, setBusqueda] = React.useState("");
 
   const onAddCart = (item, cantidad) => {
     setCart([
@@ -50,6 +51,8 @@ const CartContextProvider = ({ children }) => {
         editItem,
         clearItems,
         isInCart,
+        busqueda,
+        setBusqueda,
       }}
     >
       {children}

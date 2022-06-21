@@ -29,6 +29,13 @@
 .cart-item-main {
   width: 90% !important;
 }
+.detalle-precio {
+  width: 15rem;
+}
+
+.detalle-precio h5 {
+  font-size: medium !important;
+}
 
 @media screen and (max-width: 768px) {
   .cart-item-detail-btn {

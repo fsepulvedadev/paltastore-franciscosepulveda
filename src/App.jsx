@@ -5,6 +5,7 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Cart from "./components/Cart/Cart";
 import CartContextProvider from "./context/CartContext";
+import SearchContainer from "./components/SearchContainer/SearchContainer";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Navbar />
             <Routes>
               <Route path="/" element={<ItemListContainer />} />
+              <Route path="/search/:search" element={<SearchContainer />} />
               <Route path="/category/:id" element={<ItemListContainer />} />
               <Route path="/item/:id" element={<ItemDetailContainer />} />
               <Route path="/cart" element={<Cart />} />

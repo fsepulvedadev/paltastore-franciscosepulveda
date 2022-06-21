@@ -62,9 +62,10 @@ const Cart = () => {
                         )}
 
                         <p className="d-inline cart-item-detail-text m-0 d-none d-md-block fw-bolder">
-                          {item.name}
+                          {item.cantidad} x {item.name}
                         </p>
                       </div>
+
                       <div className="d-flex me-md-4 ">
                         <div className="d-flex justify-content-between cart-item-detail-btn w-100 p-0">
                           <div className="cart-counter d-flex justify-content-md-end  mx-md-2 w-100">
@@ -114,10 +115,10 @@ const Cart = () => {
                       </div>
                     </div>
                     <div className="d-flex align-items-center justify-content-md-end justify-content-between text-center me-md-4 mt-md-0 mt-2">
-                      <h5 className="d-inline cart-item-detail-text m-0 d-md-none mobile-name ms-2 fs-6 me-4 align-items-center fw-bolder">
-                        {item.name}
+                      <h5 className="d-inline-flex cart-item-detail-text d-md-none mobile-name fs-6 align-items-center fw-bolder w-100">
+                        {item.cantidad} x {item.name}
                       </h5>
-                      <h4 className="me-2 m-0 p-0 w-100">
+                      <h4 className="ms-1 m-md-0 p-0 fs-5">
                         {`$${formatNumbers.format(item.price * item.cantidad)}`}
                       </h4>
                     </div>
