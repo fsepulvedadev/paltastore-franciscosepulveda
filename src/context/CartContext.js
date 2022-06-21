@@ -41,6 +41,10 @@ const CartContextProvider = ({ children }) => {
     setCart([]);
   };
 
+  const resetBusqueda = () => {
+    setBusqueda("");
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -53,6 +57,7 @@ const CartContextProvider = ({ children }) => {
         isInCart,
         busqueda,
         setBusqueda,
+        resetBusqueda,
       }}
     >
       {children}

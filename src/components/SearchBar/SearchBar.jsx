@@ -1,10 +1,15 @@
 import React, { useState, useContext } from "react";
+import { useEffect } from "react";
 import { Form, FormControl, Button } from "react-bootstrap";
 import { CartContext } from "../../context/CartContext";
 
 const SearchBar = () => {
   const [userInput, setUserInput] = useState("");
-  const { setBusqueda } = useContext(CartContext);
+  const { setBusqueda, busqueda } = useContext(CartContext);
+
+  useEffect(() => {
+    setUserInput(busqueda);
+  }, [busqueda]);
   return (
     <>
       <Form

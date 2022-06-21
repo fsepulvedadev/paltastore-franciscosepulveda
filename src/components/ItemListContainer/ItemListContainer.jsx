@@ -46,7 +46,9 @@ const ItemListContainer = () => {
       setloading(true);
       setTimeout(() => {
         setItems(
-          dataItems.filter((item) => item.name.toLowerCase().includes(busqueda))
+          dataItems.filter((item) =>
+            item.name.toLowerCase().normalize().includes(busqueda)
+          )
         );
         if (Items.length === 0) {
           setBusquedaError(true);
@@ -82,23 +84,14 @@ const ItemListContainer = () => {
       {!loading && !error && !selectedItem && (
         <ItemList selectItem={selectItem} items={Items} />
       )}
-      {!loading &&
-        !error &&
-        !selectedItem &&
-        !busquedaError &&
-        Items.length === 0 && (
-          <div className="d-flex flex-column justify-content-center align-items-center w-100">
-            <h1 className="text-center">No hay productos en esta categoria.</h1>
-            <button className="btn btn-primary palta-btn w-50 align">
-              <Link className="text-decoration-none text-white" to="/">
-                Volver
-              </Link>
-            </button>
-          </div>
-        )}
-      {!loading && !error && !selectedItem && busquedaError && (
+
+      {!loading && !error && !selectedItem && Items.length === 0 && (
         <div className="d-flex flex-column justify-content-center align-items-center w-100">
-          <h1 className="text-center">{`Tu busqueda de ${busqueda} no arrojo resultados.`}</h1>
+          {busquedaError ? (
+            <h1 className="text-center">{`Tu busqueda de ${busqueda} no arrojo resultados.`}</h1>
+          ) : (
+            <h1 className="text-center">No hay productos en esta categoria.</h1>
+          )}
           <button
             onClick={() => {
               setBusqueda("");

@@ -34,7 +34,7 @@ const dataItems = [
   },
   {
     id: 3,
-    name: "Cómoda Airin",
+    name: "Comoda Airin",
     price: 67991,
     description:
       "La Comoda Alanis, posee un diseño de origen Nórdico con estilo minimalista y cuenta con 2 cajones de madera grandes y 2 puertas súper cómodas para que puedas guardar de todo. Los muebles de la colección Alanis son ideales para livings, dormitorios y comedores. Posee terminaciones redondeadas y de máxima calidad. Color Madera Natural y Blanco.",

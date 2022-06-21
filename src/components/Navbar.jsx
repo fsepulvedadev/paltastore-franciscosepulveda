@@ -11,13 +11,12 @@ import {
 import logo from "../assets/logo.svg";
 import CartWidget from "./CartWidget/CartWidget";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import SearchBar from "./SearchBar/SearchBar";
 
 function Navbar() {
-  const [buscando, setBuscando] = useState(false);
-  const { cart } = useContext(CartContext);
+  const { cart, resetBusqueda } = useContext(CartContext);
 
   return (
     <div>
@@ -30,7 +29,12 @@ function Navbar() {
       >
         <Container>
           <NavbarBootstrap.Brand>
-            <Link to="/">
+            <Link
+              onClick={() => {
+                resetBusqueda();
+              }}
+              to="/"
+            >
               <img
                 src={logo}
                 width="40"
@@ -41,7 +45,13 @@ function Navbar() {
             </Link>
           </NavbarBootstrap.Brand>
           <NavbarBootstrap.Brand>
-            <Link to="/" className="text-decoration-none text-white">
+            <Link
+              onClick={() => {
+                resetBusqueda();
+              }}
+              to="/"
+              className="text-decoration-none text-white"
+            >
               Palta Store
             </Link>
           </NavbarBootstrap.Brand>
@@ -50,7 +60,13 @@ function Navbar() {
           <NavbarBootstrap.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto ">
               <Nav.Link>
-                <Link className="text-white text-decoration-none" to="/">
+                <Link
+                  onClick={() => {
+                    resetBusqueda();
+                  }}
+                  className="text-white text-decoration-none"
+                  to="/"
+                >
                   Inicio
                 </Link>
               </Nav.Link>
