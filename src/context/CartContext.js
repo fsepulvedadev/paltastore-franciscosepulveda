@@ -1,10 +1,13 @@
 import React from "react";
+import { useState } from "react";
 
 export const CartContext = React.createContext({});
 
 const CartContextProvider = ({ children }) => {
   const [cart, setCart] = React.useState([]);
   const [busqueda, setBusqueda] = React.useState("");
+  const [selectItem, setSelectItem] = React.useState(null);
+  const [loading, setLoading] = useState(true);
 
   const onAddCart = (item, cantidad) => {
     if (isInCart(item.id)) {
@@ -35,6 +38,10 @@ const CartContextProvider = ({ children }) => {
     }
 
     console.log(cart);
+  };
+
+  const handleTargetItem = (item) => {
+    setSelectItem(item);
   };
 
   const removeItem = (id) => {
@@ -75,6 +82,10 @@ const CartContextProvider = ({ children }) => {
         busqueda,
         setBusqueda,
         resetBusqueda,
+        selectItem,
+        loading,
+        setLoading,
+        handleTargetItem,
       }}
     >
       {children}

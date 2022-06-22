@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import dataItems from "../../ItemsDB";
 import ItemDetail from "../ItemDetail/ItemDetail";
 
 import { useParams } from "react-router-dom";
 import PaltaLogo from "../../assets/logo.svg";
+import { CartContext } from "../../context/CartContext";
 
 const ItemDetailContainer = () => {
   const [Item, setItem] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { handleTargetItem, loading, setLoading } = useContext(CartContext);
 
   const { id } = useParams();
 
@@ -17,11 +18,13 @@ const ItemDetailContainer = () => {
     });
 
     setItem(targetItem);
+    handleTargetItem(targetItem);
     setLoading(false);
   };
 
   useEffect(() => {
     const getItems = new Promise((resolve, reject) => {
+      setLoading(true);
       setTimeout(() => {
         resolve(dataItems);
       }, 2000);
@@ -38,7 +41,7 @@ const ItemDetailContainer = () => {
           <img src={PaltaLogo} alt="Palta Logo" className="palta-spiner" />
         </div>
       )}
-      {!loading && Item && <ItemDetail targetItem={Item} />}
+      {!loading && Item && <ItemDetail />}
     </div>
   );
 };
