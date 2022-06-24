@@ -1,0 +1,21 @@
+.palta-spiner {
+  width: 4.5rem;
+  animation: spiner 0.9s infinite;
+}
+
+.palta-spiner-container {
+  height: 100vh;
+}
+
+@keyframes spiner {
+  50% {
+    transform: rotate(360deg);
+  }
+  75% {
+    transform: scale(1.5);
+    filter: drop-shadow(0 0 0.75rem #aef78e);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

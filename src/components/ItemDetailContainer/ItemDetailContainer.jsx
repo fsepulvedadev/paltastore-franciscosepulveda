@@ -1,38 +1,33 @@
 import { useState, useEffect, useContext } from "react";
-import dataItems from "../../ItemsDB";
 import ItemDetail from "../ItemDetail/ItemDetail";
-
+import "./ItemDetailContainer.css";
 import { useParams } from "react-router-dom";
 import PaltaLogo from "../../assets/logo.svg";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { CartContext } from "../../context/CartContext";
 
 const ItemDetailContainer = () => {
-  const [Item, setItem] = useState(null);
-  const { handleTargetItem, loading, setLoading } = useContext(CartContext);
+  const [item, setItem] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const { setSelectItem } = useContext(CartContext);
 
+  const db = getFirestore();
   const { id } = useParams();
-
-  const filtrarSelectItem = (array, SelectItem) => {
-    let targetItem = array.find((item) => {
-      return item.id === parseInt(SelectItem);
-    });
-
-    setItem(targetItem);
-    handleTargetItem(targetItem);
-    setLoading(false);
-  };
+  const itemRef = doc(db, "productos", id);
 
   useEffect(() => {
-    const getItems = new Promise((resolve, reject) => {
-      setLoading(true);
-      setTimeout(() => {
-        resolve(dataItems);
-      }, 2000);
-    });
-    getItems.then((data) => {
-      filtrarSelectItem(data, id);
-    });
-  }, [id]);
+    setLoading(true);
+    getDoc(itemRef)
+      .then((res) => {
+        setItem({ id: res.id, ...res.data() });
+      })
+
+      .finally(() => {
+        item && setSelectItem(item);
+
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <div className="container">
@@ -41,7 +36,7 @@ const ItemDetailContainer = () => {
           <img src={PaltaLogo} alt="Palta Logo" className="palta-spiner" />
         </div>
       )}
-      {!loading && Item && <ItemDetail />}
+      {!loading && item && <ItemDetail item={item} />}
     </div>
   );
 };

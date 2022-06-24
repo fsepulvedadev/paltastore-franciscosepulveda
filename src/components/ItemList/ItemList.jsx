@@ -12,7 +12,7 @@ const ItemList = ({ items, selectItem }) => {
               selectItem={selectItem}
               key={item.id}
               id={item.id}
-              categoria={item.categoria}
+              category={item.category}
               name={item.name}
               stock={item.stock}
               img={item.img}

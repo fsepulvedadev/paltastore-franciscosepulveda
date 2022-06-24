@@ -40,10 +40,6 @@ const CartContextProvider = ({ children }) => {
     console.log(cart);
   };
 
-  const handleTargetItem = (item) => {
-    setSelectItem(item);
-  };
-
   const removeItem = (id) => {
     setCart(cart.filter((item) => item.id !== id));
   };
@@ -82,10 +78,10 @@ const CartContextProvider = ({ children }) => {
         busqueda,
         setBusqueda,
         resetBusqueda,
-        selectItem,
         loading,
         setLoading,
-        handleTargetItem,
+        setSelectItem,
+        selectItem,
       }}
     >
       {children}

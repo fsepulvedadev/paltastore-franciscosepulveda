@@ -1,40 +1,54 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
 import "./ItemListContainer.css";
-import dataItems from "../../ItemsDB";
 import PaltaLogo from "../../assets/logo.svg";
 import { useParams, Link } from "react-router-dom";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 
 const ItemListContainer = () => {
-  const [Items, setItems] = useState([]);
+  const [items, setItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [loading, setloading] = useState(true);
   const [error, setError] = useState(false);
+  const db = getFirestore();
+  const { cat } = useParams();
+  let coleccionDeProductos = "";
 
-  const { id } = useParams();
+  if (cat) {
+    coleccionDeProductos = query(
+      collection(db, "productos"),
+      where("category", "==", cat)
+    );
+  } else if (!cat) {
+    coleccionDeProductos = collection(db, "productos");
+  }
 
   useEffect(() => {
-    const getItems = new Promise((res, rej) => {
-      setloading(true);
-      setTimeout(() => {
-        res(dataItems);
-      }, 2000);
-    });
-    getItems
+    setloading(true);
+    getDocs(coleccionDeProductos)
       .then((res) => {
-        id
-          ? setItems(res.filter((item) => item.categoria === id))
-          : setItems(res);
+        setItems(
+          res.docs.map((doc) => {
+            return { id: doc.id, ...doc.data() };
+          })
+        );
       })
-
       .catch((err) => {
         setError(true);
         console.log(err);
       })
       .finally(() => {
+        console.log(items);
+
         setloading(false);
       });
-  }, [id]);
+  }, [cat]);
 
   const selectItem = (name, price, desc, cat, stock, img, id) => {
     setSelectedItem({
@@ -42,7 +56,7 @@ const ItemListContainer = () => {
       name: name,
       price: price,
       description: desc,
-      categoria: cat,
+      category: cat,
       stock: stock,
       img: img,
     });
@@ -56,9 +70,11 @@ const ItemListContainer = () => {
         </div>
       )}
       {error && <h1>Ha ocurrido un error!</h1>}
-      {!loading && !error && !selectedItem && <ItemList items={Items} />}
+      {!loading && !error && !selectedItem && (
+        <ItemList items={items} selectItem={selectItem} />
+      )}
 
-      {!loading && !error && !selectedItem && Items.length === 0 && (
+      {!loading && !error && !selectedItem && items.length === 0 && (
         <div className="d-flex flex-column justify-content-center align-items-center w-100">
           <h1 className="text-center">No hay productos en esta categoria.</h1>
           <button className="btn btn-primary palta-btn w-50 align">

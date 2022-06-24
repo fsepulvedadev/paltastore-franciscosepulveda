@@ -9,7 +9,7 @@ const Item = ({
   img,
   description,
   price,
-  categoria,
+  category,
   selectItem,
   id,
 }) => {
@@ -27,7 +27,9 @@ const Item = ({
             alt="..."
           />
           <div className="card-body d-flex flex-column">
-            <h5 className="card-title">{name}</h5>
+            <div className="h-25">
+              <h5 className="card-title">{name}</h5>
+            </div>
             <hr />
             <h3>${price}</h3>
             <p className="card-text text-center badge palta-background-blue text-wrap">
@@ -39,7 +41,7 @@ const Item = ({
                 className="text-decoration-none text-white d-flex justify-content-center align-items-center"
                 to={`/item/${id}`}
               >
-                <span className="mx-2"> Ver detalle </span>
+                <span className="mx-2 "> Ver detalle </span>
                 <ion-icon name="search-sharp"></ion-icon>
               </Link>{" "}
             </button>
