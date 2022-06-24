@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./CartWidget.css";
 import Bolsa from "../../assets/bolsa.svg";
 
-export const CartWidget = ({ carrito }) => {
+export const CartWidget = ({ carrito, mobile }) => {
   const [cantidadCart, setCantidadCart] = useState(0);
-  console.log(carrito);
 
   useEffect(() => {
     let totalItems = 0;
@@ -16,7 +15,13 @@ export const CartWidget = ({ carrito }) => {
   }, [carrito]);
 
   return (
-    <div className={`${cantidadCart > 0 ? "d-flex" : "d-none"}`}>
+    <div
+      className={
+        mobile
+          ? `d-md-none `
+          : `${cantidadCart > 0 ? "d-none d-flex" : "d-none"}`
+      }
+    >
       <a href="/">
         <img className="bolsita" src={Bolsa} alt="" />
         <div className="cart-cantidad d-inline-block position-absolute text-white text-center">

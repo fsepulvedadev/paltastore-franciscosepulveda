@@ -23,11 +23,13 @@ const ItemDetailContainer = () => {
       })
 
       .finally(() => {
-        item && setSelectItem(item);
-
         setLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+    setSelectItem(item);
+  }, [item]);
 
   return (
     <div className="container">

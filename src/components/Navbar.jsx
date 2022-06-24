@@ -28,7 +28,10 @@ function Navbar() {
         className="palta-nav-background"
       >
         <Container>
-          <NavbarBootstrap.Brand>
+          {cart && (
+            <CartWidget className="mobile-cart" mobile={true} carrito={cart} />
+          )}
+          <NavbarBootstrap.Brand className="">
             <Link
               onClick={() => {
                 resetBusqueda();
@@ -39,11 +42,12 @@ function Navbar() {
                 src={logo}
                 width="40"
                 height="40"
-                className="d-inline-block align-top"
+                className="d-none d-md-inline-block"
                 alt="React Bootstrap logo"
               />
             </Link>
           </NavbarBootstrap.Brand>
+
           <NavbarBootstrap.Brand>
             <Link
               onClick={() => {
@@ -52,6 +56,13 @@ function Navbar() {
               to="/"
               className="text-decoration-none text-white"
             >
+              <img
+                src={logo}
+                width="40"
+                height="40"
+                className="d-md-none"
+                alt="React Bootstrap logo"
+              />
               Palta Store
             </Link>
           </NavbarBootstrap.Brand>
@@ -116,7 +127,7 @@ function Navbar() {
               {cart && (
                 <Nav>
                   <Link to="/cart">
-                    <CartWidget carrito={cart} />
+                    <CartWidget carrito={cart} mobile={false} />
                   </Link>
                 </Nav>
               )}
