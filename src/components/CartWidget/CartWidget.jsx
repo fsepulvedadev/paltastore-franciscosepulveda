@@ -19,7 +19,7 @@ export const CartWidget = ({ carrito, mobile }) => {
       className={
         mobile
           ? `d-md-none `
-          : `${cantidadCart > 0 ? "d-none d-flex" : "d-none"}`
+          : `${cantidadCart > 0 ? "d-none d-md-flex" : "d-none"}`
       }
     >
       <a href="/">
