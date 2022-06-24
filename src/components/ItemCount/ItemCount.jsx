@@ -66,7 +66,10 @@ const ItemCount = ({ stock, onAdd, inicial }) => {
         </div>
         {!compraLista && (
           <button
-            onClick={() => (onAdd(selectItem, contador), setCompraLista(true))}
+            onClick={() => {
+              onAdd(selectItem, contador);
+              setCompraLista(true);
+            }}
             className="btn btn-secondary palta-btn  d-flex justify-content-center align-items-center"
           >
             <span className="mx-2">Agregar </span>

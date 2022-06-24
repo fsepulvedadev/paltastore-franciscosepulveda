@@ -4,9 +4,6 @@ import {
   Navbar as NavbarBootstrap,
   NavDropdown,
   Nav,
-  Form,
-  FormControl,
-  Button,
 } from "react-bootstrap";
 import logo from "../assets/logo.svg";
 import CartWidget from "./CartWidget/CartWidget";
