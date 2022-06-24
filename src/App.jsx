@@ -7,8 +7,6 @@ import Cart from "./components/Cart/Cart";
 import CartContextProvider from "./context/CartContext";
 import SearchContainer from "./components/SearchContainer/SearchContainer";
 import { initializeApp } from "firebase/app";
-import FBTest from "./components/firebase/FBTest";
-import FBTestProdutos from "./components/firebase/FBTestProdutos";
 
 function App() {
   const FirebaseConfig = {
@@ -34,8 +32,6 @@ function App() {
               <Route path="/category/:cat" element={<ItemListContainer />} />
               <Route path="/item/:id" element={<ItemDetailContainer />} />
               <Route path="/cart" element={<Cart />} />
-              <Route path="/fbtest" element={<FBTest />} />
-              <Route path="/fbtestproductos" element={<FBTestProdutos />} />
             </Routes>
             <Footer />
           </BrowserRouter>
