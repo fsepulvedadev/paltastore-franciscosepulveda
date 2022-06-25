@@ -25,9 +25,15 @@ function Navbar() {
         className="palta-nav-background"
       >
         <Container>
-          {cart && (
-            <CartWidget className="mobile-cart" mobile={true} carrito={cart} />
-          )}
+          <Link to="/cart">
+            {cart && (
+              <CartWidget
+                className="mobile-cart"
+                mobile={true}
+                carrito={cart}
+              />
+            )}
+          </Link>
           <NavbarBootstrap.Brand className="">
             <Link
               onClick={() => {

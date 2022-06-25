@@ -22,12 +22,12 @@ export const CartWidget = ({ carrito, mobile }) => {
           : `${cantidadCart > 0 ? "d-none d-md-flex" : "d-none"}`
       }
     >
-      <a href="/">
+      <div>
         <img className="bolsita" src={Bolsa} alt="" />
         <div className="cart-cantidad d-inline-block position-absolute text-white text-center">
           <p>{cantidadCart}</p>
         </div>
-      </a>
+      </div>
     </div>
   );
 };
