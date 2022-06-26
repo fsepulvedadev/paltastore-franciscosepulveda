@@ -93,7 +93,7 @@ function Navbar() {
                 <NavDropdown.Item>
                   <Link
                     className="text-decoration-none text-black"
-                    to="/category/1"
+                    to="/category/casa"
                   >
                     Casa
                   </Link>
@@ -101,7 +101,7 @@ function Navbar() {
                 <NavDropdown.Item>
                   <Link
                     className="text-decoration-none text-black"
-                    to="/category/2"
+                    to="/category/baño"
                   >
                     Baño
                   </Link>
@@ -109,7 +109,7 @@ function Navbar() {
                 <NavDropdown.Item>
                   <Link
                     className="text-decoration-none text-black"
-                    to="/category/3"
+                    to="/category/cocina"
                   >
                     Cocina
                   </Link>
@@ -117,7 +117,7 @@ function Navbar() {
                 <NavDropdown.Item>
                   <Link
                     className="text-decoration-none text-black"
-                    to="/category/4"
+                    to="/category/muebles"
                   >
                     Muebles
                   </Link>
