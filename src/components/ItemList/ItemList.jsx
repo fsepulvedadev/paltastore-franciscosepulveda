@@ -5,7 +5,7 @@ import "./ItemList.css";
 const ItemList = ({ items, selectItem }) => {
   return (
     <>
-      <div className="d-flex justify-content-center align-items-center flex-wrap w-75">
+      <div className="d-flex justify-content-center align-items-center flex-wrap w-100">
         {items.map((item) => {
           return (
             <Item

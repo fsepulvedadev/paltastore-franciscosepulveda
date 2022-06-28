@@ -40,6 +40,10 @@ const CartContextProvider = ({ children }) => {
     console.log(cart);
   };
 
+  const getCartTotal = () => {
+    return cart.reduce((acc, x) => (acc += x.price * x.cantidad), 0);
+  };
+
   const removeItem = (id) => {
     setCart(cart.filter((item) => item.id !== id));
   };
@@ -82,6 +86,7 @@ const CartContextProvider = ({ children }) => {
         setLoading,
         setSelectItem,
         selectItem,
+        getCartTotal,
       }}
     >
       {children}

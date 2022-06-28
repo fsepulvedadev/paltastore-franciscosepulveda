@@ -1,0 +1,9 @@
+.checkout-main {
+  height: 500px;
+}
+
+@media screen and (max-width: 768px) {
+  .checkout-main input {
+    width: 80% !important;
+  }
+}

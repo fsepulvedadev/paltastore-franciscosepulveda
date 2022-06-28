@@ -71,7 +71,10 @@ const ItemListContainer = () => {
       )}
       {error && <h1>Ha ocurrido un error!</h1>}
       {!loading && !error && !selectedItem && (
-        <ItemList items={items} selectItem={selectItem} />
+        <div className="container w-100">
+          {cat && <h1 className="text-uppercase text-center">{cat}</h1>}
+          <ItemList items={items} selectItem={selectItem} />
+        </div>
       )}
 
       {!loading && !error && !selectedItem && items.length === 0 && (
