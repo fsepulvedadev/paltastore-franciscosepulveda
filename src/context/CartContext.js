@@ -5,9 +5,11 @@ export const CartContext = React.createContext({});
 
 const CartContextProvider = ({ children }) => {
   const [cart, setCart] = React.useState([]);
+  const [finalOrder, setFinalOrder] = React.useState([]);
   const [busqueda, setBusqueda] = React.useState("");
   const [selectItem, setSelectItem] = React.useState(null);
   const [loading, setLoading] = useState(true);
+  const [compraLista, setCompraLista] = useState(false);
 
   const onAddCart = (item, cantidad) => {
     if (isInCart(item.id)) {
@@ -87,6 +89,10 @@ const CartContextProvider = ({ children }) => {
         setSelectItem,
         selectItem,
         getCartTotal,
+        compraLista,
+        setCompraLista,
+        finalOrder,
+        setFinalOrder,
       }}
     >
       {children}

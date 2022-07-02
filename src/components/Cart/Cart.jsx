@@ -103,7 +103,7 @@ const Cart = () => {
                           <div className="d-flex align-items-center h-100">
                             <button
                               type="button"
-                              class="btn btn-danger d-flex justify-content-center align-items-center h-md-50"
+                              class="btn btn-danger d-flex justify-content-center align-items-center h-md-50 ms-2"
                               onClick={() => {
                                 removeItem(item.id);
                               }}
@@ -142,6 +142,14 @@ const Cart = () => {
               Eliminar todos
               <ion-icon name="trash-outline"></ion-icon>
             </button>
+            <Link to="/checkout" className="text-white text-decoration-none ">
+              <button
+                type="button"
+                class="btn palta-btn d-flex justify-content-center align-items-center h-md-50 my-3 mx-2"
+              >
+                Finalizar Compra
+              </button>
+            </Link>
           </div>
         </div>
       </div>

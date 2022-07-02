@@ -1,9 +1,36 @@
 .checkout-main {
   height: 500px;
 }
+/* .list-detalle-checkout {
+  height: 100rem !important;
+} */
+.list-detalle-checkout li {
+  height: 3rem !important;
+}
+.list-detalle-checkout img {
+  width: 25px !important;
+  height: fit-content !important;
+}
+
+.list-detalle-checkout h5 {
+  font-size: small !important;
+}
+
+.loading-spiner {
+  animation: spin 1s linear infinite;
+}
 
 @media screen and (max-width: 768px) {
   .checkout-main input {
     width: 80% !important;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

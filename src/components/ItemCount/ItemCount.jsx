@@ -1,15 +1,26 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 
 import "./ItemCount.css";
 
-const ItemCount = ({ stock, onAdd, inicial }) => {
+const ItemCount = ({ stock, onAdd, inicial, itemId }) => {
   const [contador, setContador] = useState(inicial);
+  const [stockInCart, setStockInCart] = useState(0);
   const [stockControl, setStockControl] = useState(false);
-  const [compraLista, setCompraLista] = useState(false);
 
-  const { selectItem } = useContext(CartContext);
+  const { selectItem, compraLista, setCompraLista, cart } =
+    useContext(CartContext);
+  console.log(cart);
+
+  useEffect(() => {
+    cart.map((item) => {
+      if (item.id === itemId) {
+        return setStockInCart(item.cantidad);
+      }
+      return console.log(stockInCart);
+    });
+  }, [cart]);
 
   return (
     <>
@@ -35,19 +46,27 @@ const ItemCount = ({ stock, onAdd, inicial }) => {
                 placeholder=""
                 aria-label="Example text with button addon"
                 aria-describedby="button-addon1"
+                max={stock}
               />
               <button
                 className="btn btn-outline-secondary palta-btn col "
                 type="button"
                 id="button-addon1"
-                onClick={() =>
-                  contador < stock
-                    ? setContador(contador + 1)
-                    : (setStockControl(true),
-                      setTimeout(() => {
-                        setStockControl(false);
-                      }, 1500))
-                }
+                onClick={() => {
+                  if (contador > stock) {
+                    setStockControl(true);
+                    setTimeout(() => {
+                      setStockControl(false);
+                    }, 1500);
+                  } else if (stockInCart || contador > stockInCart) {
+                    setStockControl(true);
+                    setTimeout(() => {
+                      setStockControl(false);
+                    }, 1500);
+                  } else {
+                    setContador(contador + 1);
+                  }
+                }}
               >
                 +
               </button>

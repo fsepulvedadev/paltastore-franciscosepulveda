@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Carousel } from "react-bootstrap";
 import "./ItemDetail.css";
 import ItemCount from "../ItemCount/ItemCount";
@@ -6,7 +6,13 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ item }) => {
-  const { onAddCart } = useContext(CartContext);
+  const { onAddCart, compraLista, setCompraLista } = useContext(CartContext);
+
+  useEffect(() => {
+    return () => {
+      setCompraLista(false);
+    };
+  }, []);
 
   return (
     <div className="detail-bg d-flex w-100 my-4 py-4 p-md-0 flex-column flex-md-row justify-content-around align-items-start m-md-4 shadow-lg h-100">
@@ -36,12 +42,17 @@ const ItemDetail = ({ item }) => {
         <p className="fs-2 fw-bolder">$ {item.price}</p>
         <hr />
         <h5 className="fw-bold">DESCRIPCION</h5>
-        <p className="lh-2 w-50">{item.description}</p>
-        <ItemCount stock={item.stock} inicial={1} onAdd={onAddCart} />
+        <p className="lh-2 w-75">{item.description}</p>
+        <ItemCount
+          stock={item.stock}
+          inicial={1}
+          onAdd={onAddCart}
+          itemId={item.id}
+        />
 
         <button className="btn btn-primary palta-btn mt-2">
           <Link className="text-decoration-none text-white" to={`/`}>
-            Regresar
+            {compraLista ? "Seguir comprando" : "Regresar"}
             <ion-icon size="medium" name="return-down-back-outline"></ion-icon>
           </Link>
         </button>

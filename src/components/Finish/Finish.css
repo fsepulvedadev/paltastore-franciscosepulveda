@@ -1,0 +1,22 @@
+.finish-main {
+  height: 60vh !important;
+}
+.finish-main li {
+  list-style: none !important;
+}
+.finish-main p {
+  font-size: large !important;
+}
+
+.green-card {
+  width: 50% !important;
+}
+
+@media screen and (max-width: 768px) {
+  .green-card {
+    width: 100% !important;
+  }
+  .finish-main li {
+    font-size: x-small !important;
+  }
+}
