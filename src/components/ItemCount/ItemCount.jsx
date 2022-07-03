@@ -4,23 +4,31 @@ import { Link } from "react-router-dom";
 
 import "./ItemCount.css";
 
-const ItemCount = ({ stock, onAdd, inicial, itemId }) => {
+const ItemCount = ({ stock, handleStock, onAdd, inicial, itemId, item }) => {
   const [contador, setContador] = useState(inicial);
-  const [stockInCart, setStockInCart] = useState(0);
+  /* const [stockLeft, setStockLeft] = useState(0); */
   const [stockControl, setStockControl] = useState(false);
 
   const { selectItem, compraLista, setCompraLista, cart } =
     useContext(CartContext);
   console.log(cart);
 
-  useEffect(() => {
-    cart.map((item) => {
-      if (item.id === itemId) {
-        return setStockInCart(item.cantidad);
+  /*  useEffect(() => {
+    let cantidadInCart = 0;
+
+    cart.map((prod) => {
+      if (prod.id === itemId) {
+        if (prod.cantidad > 0) {
+          cantidadInCart = item.stock - prod.cantidad;
+        }
+        return cantidadInCart;
+      } else {
+        return (cantidadInCart = item.stock);
       }
-      return console.log(stockInCart);
     });
-  }, [cart]);
+    setStockLeft(cantidadInCart);
+    console.log("cart", cantidadInCart);
+  }, []); */
 
   return (
     <>
@@ -32,9 +40,11 @@ const ItemCount = ({ stock, onAdd, inicial, itemId }) => {
                 className="btn btn-outline-secondary palta-btn"
                 type="button"
                 id="button-addon1"
-                onClick={() =>
-                  contador > 1 ? setContador(contador - 1) : null
-                }
+                onClick={() => {
+                  if (contador > 1) {
+                    setContador(contador - 1);
+                  }
+                }}
               >
                 -
               </button>
@@ -46,25 +56,16 @@ const ItemCount = ({ stock, onAdd, inicial, itemId }) => {
                 placeholder=""
                 aria-label="Example text with button addon"
                 aria-describedby="button-addon1"
-                max={stock}
               />
               <button
                 className="btn btn-outline-secondary palta-btn col "
                 type="button"
                 id="button-addon1"
                 onClick={() => {
-                  if (contador > stock) {
-                    setStockControl(true);
-                    setTimeout(() => {
-                      setStockControl(false);
-                    }, 1500);
-                  } else if (stockInCart || contador > stockInCart) {
-                    setStockControl(true);
-                    setTimeout(() => {
-                      setStockControl(false);
-                    }, 1500);
-                  } else {
+                  if (contador < stock) {
                     setContador(contador + 1);
+                  } else {
+                    setStockControl(true);
                   }
                 }}
               >
@@ -74,7 +75,9 @@ const ItemCount = ({ stock, onAdd, inicial, itemId }) => {
           )}
         </div>
         <div className="d-flex flex-column justify-content-center align-items-center">
-          <span className="badge bg-success mb-2">Stock {stock} unidades</span>
+          <span className="badge bg-success mb-2">
+            Hay {stock} unidades disponibles
+          </span>
           {stockControl && (
             <ul className="list-group pb-2">
               <li className="list-group-item list-group-item-warning">
@@ -87,6 +90,7 @@ const ItemCount = ({ stock, onAdd, inicial, itemId }) => {
           <button
             onClick={() => {
               onAdd(selectItem, contador);
+
               setCompraLista(true);
             }}
             className="btn btn-secondary palta-btn  d-flex justify-content-center align-items-center"

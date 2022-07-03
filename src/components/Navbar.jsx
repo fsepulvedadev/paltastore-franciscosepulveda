@@ -84,11 +84,7 @@ function Navbar() {
                   Inicio
                 </Link>
               </Nav.Link>
-              <Nav.Link>
-                <Link className="text-white text-decoration-none" to="/">
-                  Ofertas
-                </Link>
-              </Nav.Link>
+
               <NavDropdown title="Categorias" id="collasible-nav-dropdown">
                 <NavDropdown.Item>
                   <Link

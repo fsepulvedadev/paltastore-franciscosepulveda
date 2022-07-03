@@ -4,6 +4,11 @@
   background-color: #f5f5f5;
   min-height: 80vh !important;
 }
+.error-stock-cart {
+  position: absolute !important;
+  left: 60%;
+  top: 30%;
+}
 
 .img-cart {
   width: 4rem;
@@ -45,5 +50,9 @@
   .img-cart {
     width: 6rem;
     height: 5rem;
+  }
+  .error-stock-cart {
+    left: 22%;
+    top: 35%;
   }
 }

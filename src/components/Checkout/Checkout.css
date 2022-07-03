@@ -1,9 +1,11 @@
 .checkout-main {
   height: 500px;
 }
-/* .list-detalle-checkout {
-  height: 100rem !important;
-} */
+
+.error {
+  color: red !important;
+}
+
 .list-detalle-checkout li {
   height: 3rem !important;
 }

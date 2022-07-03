@@ -1,36 +1,54 @@
 import { useEffect, useState, useContext } from "react";
 import ItemList from "../ItemList/ItemList";
-import dataItems from "../../ItemsDB";
 import PaltaLogo from "../../assets/logo.svg";
 import { Link, useParams } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 
 const SearchContainer = () => {
   const [Items, setItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const { search } = useParams();
+  const db = getFirestore();
+  let busqueda = "";
 
   const { setBusqueda } = useContext(CartContext);
 
+  busqueda = query(collection(db, "productos"));
+
   // EFECTO PARA BUSCAR
   useEffect(() => {
-    if (search) {
-      setLoading(true);
-      setTimeout(() => {
+    setLoading(true);
+    getDocs(busqueda)
+      .then((res) => {
         setItems(
-          dataItems.filter((item) =>
+          res.docs.map((docs) => {
+            return { id: docs.id, ...docs.data() };
+          })
+        );
+      })
+      .then(() => {
+        setFilteredItems(
+          Items.filter((item) =>
             item.name.toLowerCase().normalize().includes(search)
           )
         );
-        if (Items.length === 0) {
-          setBusqueda("");
-        }
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
         setLoading(false);
-      }, 500);
-    } else {
-      setItems(dataItems);
-    }
+        console.log("busqueda", Items);
+      });
   }, [search]);
 
   const selectItem = (name, price, desc, cat, stock, img, id) => {
@@ -54,14 +72,14 @@ const SearchContainer = () => {
       )}
       {!loading && !selectedItem && (
         <div className="container d-flex justify-content-center aling-items-center flex-wrap">
-          {Items.length > 0 && search && (
-            <h1>{`Tu busqueda de ${search} arrojo ${Items.length} resultado/s`}</h1>
+          {filteredItems.length > 0 && search && (
+            <h1>{`Tu busqueda de ${search} arrojo ${filteredItems.length} resultado/s`}</h1>
           )}
-          <ItemList selectItem={selectItem} items={Items} />
+          <ItemList selectItem={selectItem} items={filteredItems} />
         </div>
       )}
 
-      {!loading && !selectedItem && Items.length === 0 && (
+      {!loading && !selectedItem && filteredItems.length === 0 && (
         <div className="d-flex flex-column justify-content-center align-items-center w-100">
           <h1 className="text-center">{`Tu busqueda de ${search} no arrojo resultado/s.`}</h1>
           <button
