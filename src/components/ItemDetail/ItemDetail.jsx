@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Carousel } from "react-bootstrap";
 import "./ItemDetail.css";
 import ItemCount from "../ItemCount/ItemCount";
@@ -45,6 +45,7 @@ const ItemDetail = ({ item }) => {
         <p className="lh-2 w-75">{item.description}</p>
         <ItemCount
           stock={item.stock}
+          item={item}
           inicial={1}
           onAdd={onAddCart}
           itemId={item.id}

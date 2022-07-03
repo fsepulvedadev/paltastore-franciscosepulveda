@@ -1,16 +1,15 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { CartContext } from "../../context/CartContext";
 import "./Checkout.css";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { Formik } from "formik";
 
 const Checkout = () => {
   const { cart, getCartTotal, setFinalOrder, clearItems } =
     useContext(CartContext);
-  const [name, setName] = useState("");
-  const [cel, setCel] = useState("");
-  const [email, setEmail] = useState("");
+
   const [loading, setLoading] = useState(false);
   let formatNumbers = Intl.NumberFormat("en-US");
 
@@ -19,8 +18,7 @@ const Checkout = () => {
   const db = getFirestore();
   const orderCollection = collection(db, "orders");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (valores) => {
     setLoading(true);
 
     if (!cart) {
@@ -29,7 +27,7 @@ const Checkout = () => {
     }
 
     const order = {
-      user: { name, cel, email },
+      user: { name: valores.name, cel: valores.cel, email: valores.email },
       items: cart,
       total: getCartTotal(),
     };
@@ -101,60 +99,125 @@ const Checkout = () => {
               <p className="m-2">${formatNumbers.format(getCartTotal())}</p>
             </h4>
           </div>
-          <form className="d-flex flex-column w-100 h-100 justify-content-center align-items-center">
-            <h4 className="w-100 text-center">
-              Completa tus datos para finalizar el pedido.
-            </h4>
-            <div className="d-flex w-75 flex-column align-items-center my-2">
-              <label htmlFor="name"> Nombre</label>
-              <input
-                className="w-50 p-1 rounded"
-                placeholder="Carlos Perez"
-                value={name}
-                type="text"
-                name="name"
-                id="name"
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div className="d-flex  w-75 flex-column align-items-center my-2">
-              <label htmlFor="cel"> Celular</label>
-              <input
-                className="w-50  p-1 rounded"
-                placeholder="11 5 233 322"
-                value={cel}
-                type="tel"
-                name="cel"
-                id="name"
-                onChange={(e) => setCel(e.target.value)}
-              />
-            </div>
-            <div className="d-flex  w-75 flex-column align-items-center my-2 ">
-              <label htmlFor="email"> Email</label>
-              <input
-                className="w-50 p-1 rounded "
-                placeholder="email@myemail.com"
-                value={email}
-                type="email"
-                name="email"
-                id="name"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <button
-              disabled={loading ? true : false}
-              className="w-50 mt-4 palta-btn p-2"
-              onClick={handleSubmit}
-            >
-              {loading ? (
-                <div className="loading-spiner">
-                  <ion-icon size="large" name="refresh-outline"></ion-icon>
+          <Formik
+            initialValues={{
+              name: "",
+              cel: "",
+              email: "",
+            }}
+            validate={(values) => {
+              let errores = {};
+              if (!values.email) {
+                errores.email = "Porfavor, ingrese su correo electrónico";
+              } else if (
+                !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
+                  values.email
+                )
+              ) {
+                errores.email =
+                  "Porfavor, ingrese un correo electrónico válido";
+              }
+
+              if (!values.cel) {
+                errores.cel = "Porfavor, ingrese su numero de telefono.";
+              } else if (!/^\d{7,14}$/.test(values.cel)) {
+                errores.cel = "Porfavor, ingrese un numero de telefono valido.";
+              }
+              if (!values.name) {
+                errores.name = "Porfavor, ingrese su nombre y apellido.";
+              } else if (!/^[a-z ,.'-]+$/i.test(values.name)) {
+                errores.name =
+                  "Porfavor, ingrese su nombre seguido del apellido.";
+              }
+              return errores;
+            }}
+            onSubmit={handleSubmit}
+          >
+            {({ errors, values, handleSubmit, handleChange, handleBlur }) => (
+              <form
+                onSubmit={handleSubmit}
+                className="d-flex flex-column w-100 h-100 justify-content-center align-items-center"
+              >
+                <h4 className="w-100 text-center">
+                  Completa tus datos para finalizar el pedido.
+                </h4>
+                <div className="d-flex w-75 flex-column align-items-center my-2">
+                  <label htmlFor="name"> Nombre y Apellido</label>
+                  <input
+                    className={`w-50 p-1 rounded ${
+                      errors.name && "border border-2 border-danger"
+                    }`}
+                    placeholder="Carlos Perez"
+                    value={values.name}
+                    type="text"
+                    name="name"
+                    id="name"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {errors.name && (
+                    <div className=" error  mt-2 p-1 rounded">
+                      {errors.name}
+                    </div>
+                  )}
                 </div>
-              ) : (
-                "Finalizar Compra"
-              )}
-            </button>
-          </form>
+
+                <div className="d-flex  w-75 flex-column align-items-center my-2">
+                  <label htmlFor="cel"> Celular</label>
+                  <input
+                    className={`w-50 p-1 rounded ${
+                      errors.cel && "border border-2 border-danger"
+                    }`}
+                    placeholder="11 5 233 322"
+                    value={values.cel}
+                    type="tel"
+                    name="cel"
+                    id="name"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {errors.cel && (
+                    <div className=" error  mt-2 p-1 rounded ">
+                      {errors.cel}
+                    </div>
+                  )}
+                </div>
+                <div className="d-flex  w-75 flex-column align-items-center my-2 ">
+                  <label htmlFor="email"> Email</label>
+                  <input
+                    className={`w-50 p-1 rounded ${
+                      errors.email && "border border-2 border-danger"
+                    }`}
+                    placeholder="email@myemail.com"
+                    value={values.email}
+                    type="email"
+                    name="email"
+                    id="name"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {errors.email && (
+                    <div className=" error mt-2 p-1 rounded ">
+                      {errors.email}
+                    </div>
+                  )}
+                </div>
+                <button
+                  disabled={loading ? !errors && true : false}
+                  className="w-50 mt-4 palta-btn p-2"
+                  type="submit"
+                >
+                  {loading ? (
+                    <div className="loading-spiner">
+                      <ion-icon size="large" name="refresh-outline"></ion-icon>
+                    </div>
+                  ) : (
+                    "Finalizar Compra"
+                  )}
+                </button>
+              </form>
+            )}
+          </Formik>
         </div>
       </div>
     </div>

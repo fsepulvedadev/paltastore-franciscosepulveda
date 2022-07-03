@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
 import "./ItemListContainer.css";
 import PaltaLogo from "../../assets/logo.svg";

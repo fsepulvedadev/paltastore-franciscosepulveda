@@ -6,6 +6,7 @@ import "./Cart.css";
 
 const Cart = () => {
   const [cartTotal, setCartTotal] = useState(0);
+  const [stockControl, setStockControl] = useState(false);
   const { cart, editItem, removeItem, clearItems } = useContext(CartContext);
   let formatNumbers = Intl.NumberFormat("en-US");
   useEffect(() => {
@@ -94,7 +95,14 @@ const Cart = () => {
                               type="button"
                               id="button-addon1"
                               onClick={() => {
-                                editItem(item.id, item.cantidad + 1);
+                                if (item.cantidad < item.stock) {
+                                  editItem(item.id, item.cantidad + 1);
+                                } else {
+                                  setStockControl(true);
+                                  setTimeout(() => {
+                                    setStockControl(false);
+                                  }, 1500);
+                                }
                               }}
                             >
                               <ion-icon name="add-outline"></ion-icon>
@@ -112,6 +120,11 @@ const Cart = () => {
                             </button>
                           </div>
                         </div>
+                        {stockControl && (
+                          <div className="error error-stock-cart">
+                            El stock maximo es {item.stock}
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="d-flex align-items-center justify-content-md-end justify-content-between text-center me-md-4 mt-md-0 mt-2">

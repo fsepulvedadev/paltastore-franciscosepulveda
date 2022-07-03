@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const CartContext = React.createContext({});
 
@@ -10,6 +10,16 @@ const CartContextProvider = ({ children }) => {
   const [selectItem, setSelectItem] = React.useState(null);
   const [loading, setLoading] = useState(true);
   const [compraLista, setCompraLista] = useState(false);
+
+  useEffect(() => {
+    const newCart = JSON.parse(localStorage.getItem("cart"));
+    if (newCart) {
+      console.log(newCart);
+      if (cart.length === 0) {
+        setCart(newCart);
+      }
+    }
+  }, []);
 
   const onAddCart = (item, cantidad) => {
     if (isInCart(item.id)) {
@@ -23,20 +33,14 @@ const CartContextProvider = ({ children }) => {
             return newCart;
           }
           newCart.push(item);
+          localStorage.setItem("cart", JSON.stringify(newCart));
           return newCart;
         }, [])
       );
     } else {
-      setCart([
-        ...cart,
-        {
-          id: item.id,
-          name: item.name,
-          price: item.price,
-          cantidad: cantidad,
-          img: item.img,
-        },
-      ]);
+      const newCart = [...cart, { ...item, cantidad }];
+      localStorage.setItem("cart", JSON.stringify(newCart));
+      setCart(newCart);
     }
 
     console.log(cart);
@@ -47,17 +51,21 @@ const CartContextProvider = ({ children }) => {
   };
 
   const removeItem = (id) => {
-    setCart(cart.filter((item) => item.id !== id));
+    const newCart = cart.filter((item) => item.id !== id);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+
+    setCart(newCart);
   };
   const editItem = (id, cantidad) => {
-    setCart(
-      cart.map((item) => {
-        if (item.id === id) {
-          item.cantidad = cantidad;
-        }
-        return item;
-      })
-    );
+    const newCart = cart.map((item) => {
+      if (item.id === id) {
+        item.cantidad = cantidad;
+      }
+      return item;
+    });
+    localStorage.setItem("cart", JSON.stringify(newCart));
+
+    setCart(newCart);
   };
   const isInCart = (id) => {
     return cart.some((x) => x.id === id);
@@ -65,6 +73,7 @@ const CartContextProvider = ({ children }) => {
 
   const clearItems = () => {
     setCart([]);
+    localStorage.clear();
   };
 
   const resetBusqueda = () => {
