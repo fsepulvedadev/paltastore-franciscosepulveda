@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Navbar as NavbarBootstrap,
@@ -14,6 +14,7 @@ import SearchBar from "./SearchBar/SearchBar";
 
 function Navbar() {
   const { cart, resetBusqueda } = useContext(CartContext);
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <div>
@@ -22,10 +23,16 @@ function Navbar() {
         expand="lg"
         bg="dark"
         variant="dark"
-        className="palta-nav-background"
+        className="palta-nav-background "
+        expanded={expanded}
       >
         <Container>
-          <Link to="/cart">
+          <Link
+            onClick={() => {
+              setExpanded(false);
+            }}
+            to="/cart"
+          >
             {cart && (
               <CartWidget
                 className="mobile-cart"
@@ -37,6 +44,7 @@ function Navbar() {
           <NavbarBootstrap.Brand className="">
             <Link
               onClick={() => {
+                setExpanded(false);
                 resetBusqueda();
               }}
               to="/"
@@ -54,6 +62,7 @@ function Navbar() {
           <NavbarBootstrap.Brand>
             <Link
               onClick={() => {
+                setExpanded(false);
                 resetBusqueda();
               }}
               to="/"
@@ -70,12 +79,18 @@ function Navbar() {
             </Link>
           </NavbarBootstrap.Brand>
 
-          <NavbarBootstrap.Toggle aria-controls="responsive-navbar-nav" />
+          <NavbarBootstrap.Toggle
+            aria-controls="responsive-navbar-nav"
+            onClick={() => {
+              setExpanded(expanded ? false : "expanded");
+            }}
+          />
           <NavbarBootstrap.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto ">
               <Nav.Link>
                 <Link
                   onClick={() => {
+                    setExpanded(false);
                     resetBusqueda();
                   }}
                   className="text-white text-decoration-none"
@@ -88,6 +103,9 @@ function Navbar() {
               <NavDropdown title="Categorias" id="collasible-nav-dropdown">
                 <NavDropdown.Item>
                   <Link
+                    onClick={() => {
+                      setExpanded(false);
+                    }}
                     className="text-decoration-none text-black"
                     to="/category/casa"
                   >
@@ -96,6 +114,9 @@ function Navbar() {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <Link
+                    onClick={() => {
+                      setExpanded(false);
+                    }}
                     className="text-decoration-none text-black"
                     to="/category/baño"
                   >
@@ -104,6 +125,9 @@ function Navbar() {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <Link
+                    onClick={() => {
+                      setExpanded(false);
+                    }}
                     className="text-decoration-none text-black"
                     to="/category/cocina"
                   >
@@ -112,6 +136,9 @@ function Navbar() {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <Link
+                    onClick={() => {
+                      setExpanded(false);
+                    }}
                     className="text-decoration-none text-black"
                     to="/category/muebles"
                   >
@@ -125,7 +152,12 @@ function Navbar() {
 
               {cart && (
                 <Nav>
-                  <Link to="/cart">
+                  <Link
+                    onClick={() => {
+                      setExpanded(false);
+                    }}
+                    to="/cart"
+                  >
                     <CartWidget carrito={cart} mobile={false} />
                   </Link>
                 </Nav>
